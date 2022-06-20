@@ -1,26 +1,21 @@
-import React, { useState } from 'react'
-import './App.scss'
+import React from 'react'
+import './TodoItem.scss'
 
-const App = () => {
-    const [todos, setTodos] = useState<any>([])
-    const [todo, setTodo] = useState('')
-    const [todoEdit, setTodoEdit] = useState(null)
-    const [editText, setEditText] = useState('')
-
-    const inputChangeHandler = (event: any) => setTodo(event.target.value)
-    const formSubmitHandler = (event: any) => {
-        event.preventDefault()
-
-        const newTodo: any = {
-            id: new Date().getTime(),
-            text: todo,
-            complete: false,
-        }
-
-        setTodos([...todos].concat(newTodo))
-        setTodo('')
-    }
-
+const TodoItem = ({
+    todos,
+    setTodos,
+    todoEdit,
+    setTodoEdit,
+    editText,
+    setEditText,
+}: {
+    todos: any
+    setTodos: Function
+    todoEdit: number | null
+    setTodoEdit: Function
+    editText: string
+    setEditText: Function
+}) => {
     const deleteTodo = (id: any) => {
         const updatedTodos = [...todos].filter((todo: any) => todo.id !== id)
 
@@ -49,13 +44,8 @@ const App = () => {
         setTodoEdit(null)
         setEditText('')
     }
-
     return (
-        <div className='App'>
-            <form onSubmit={formSubmitHandler}>
-                <input type='text' onChange={inputChangeHandler} value={todo} />
-                <button type='submit'>Add todo</button>
-            </form>
+        <div>
             {todos.map((todo: any) => (
                 <div key={todo.id}>
                     {todoEdit === todo.id ? (
@@ -65,7 +55,13 @@ const App = () => {
                             value={editText}
                         />
                     ) : (
-                        <div>{todo.text}</div>
+                        <div
+                            className={`todo ${
+                                todo.completed ? 'completed' : ''
+                            }`}
+                        >
+                            {todo.text}
+                        </div>
                     )}
 
                     <button onClick={() => deleteTodo(todo.id)}>Delete</button>
@@ -91,4 +87,4 @@ const App = () => {
     )
 }
 
-export default App
+export default TodoItem
