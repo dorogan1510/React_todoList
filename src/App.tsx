@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './App.scss'
 
 const App = () => {
@@ -7,12 +7,27 @@ const App = () => {
     const [todoEdit, setTodoEdit] = useState(null)
     const [editText, setEditText] = useState('')
 
+    useEffect(() => {
+        const temp: any = localStorage.getItem('myTodo')
+        const loadedTodos = JSON.parse(temp)
+
+        if (loadedTodos) {
+            setTodos(loadedTodos)
+        } else console.log('d')
+    }, [])
+
+    useEffect(() => {
+        const temp = JSON.stringify(todos)
+        localStorage.setItem('myTodo', temp)
+    }, [todos])
+
     const inputChangeHandler = (event: any) => setTodo(event.target.value)
+
     const formSubmitHandler = (event: any) => {
         event.preventDefault()
 
         const newTodo: any = {
-            id: new Date().getTime(),
+            id: Math.random(),
             text: todo,
             complete: false,
         }
