@@ -8,6 +8,7 @@ const App = () => {
         id: number
         text: string
         complete: boolean
+        inputId: string
     }
 
     const [todos, setTodos] = useState<newTodoInterface[]>([])
@@ -31,6 +32,7 @@ const App = () => {
 
     return (
         <div className='App'>
+            <h1> Minimal Todo List</h1>
             <TodoForm
                 todo={todo}
                 setTodo={setTodo}

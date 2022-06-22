@@ -44,42 +44,72 @@ const TodoItem = ({
         setTodoEdit(null)
         setEditText('')
     }
+
     return (
         <div>
             {todos.map((todo: any) => (
-                <div key={todo.id}>
+                <div className='todo-item' key={todo.id}>
                     {todoEdit === todo.id ? (
-                        <input
-                            type='text'
-                            onChange={event => setEditText(event.target.value)}
-                            value={editText}
-                        />
+                        <div>
+                            <div className='div-edit'>
+                                <input
+                                    type='text'
+                                    onChange={event =>
+                                        setEditText(event.target.value)
+                                    }
+                                    value={editText}
+                                />
+                                <button onClick={() => submitEditTodo(todo.id)}>
+                                    Submit edit
+                                </button>
+                            </div>
+                        </div>
                     ) : (
                         <div
                             className={`todo ${
                                 todo.completed ? 'completed' : ''
                             }`}
                         >
-                            {todo.text}
+                            <div className='p-checkbox-container'>
+                                {/* <input
+                                    className='checkbox'
+                                    type='checkbox'
+                                    onChange={() =>
+                                        inputToggleComplete(todo.id)
+                                    }
+                                    checked={todo.completed}
+                                /> */}
+                                {/*  */}
+                                <div className='relative-checkbox'>
+                                    <input
+                                        type='checkbox'
+                                        className='_checkbox'
+                                        id={todo.inputId}
+                                        onChange={() =>
+                                            inputToggleComplete(todo.id)
+                                        }
+                                        checked={todo.completed}
+                                    />
+                                    <label htmlFor={todo.inputId}>
+                                        <div id='tick_mark'></div>
+                                    </label>
+                                </div>
+                                {/*  */}
+
+                                <p>{todo.text}</p>
+                            </div>
+                            <div>
+                                <button onClick={() => setTodoEdit(todo.id)}>
+                                    Edit
+                                </button>
+                                <button
+                                    className='delete-button'
+                                    onClick={() => deleteTodo(todo.id)}
+                                >
+                                    Delete
+                                </button>
+                            </div>
                         </div>
-                    )}
-
-                    <button onClick={() => deleteTodo(todo.id)}>Delete</button>
-
-                    <input
-                        type='checkbox'
-                        onChange={() => inputToggleComplete(todo.id)}
-                        checked={todo.completed}
-                    />
-
-                    {todoEdit === todo.id ? (
-                        <button onClick={() => submitEditTodo(todo.id)}>
-                            Submit edit
-                        </button>
-                    ) : (
-                        <button onClick={() => setTodoEdit(todo.id)}>
-                            Edit
-                        </button>
                     )}
                 </div>
             ))}

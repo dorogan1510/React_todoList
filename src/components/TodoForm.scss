@@ -1,0 +1,17 @@
+.form__input {
+    padding: 12px;
+    width: 327px;
+    height: 48px;
+
+    font-size: 16px;
+
+    background: #1d1d1d;
+    color: #afafaf;
+
+    border: 0.8px solid #979797;
+    border-radius: 10px;
+
+    &.danger {
+        border: 0.8px solid #ff5656;
+    }
+}
