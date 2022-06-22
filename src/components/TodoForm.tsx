@@ -1,11 +1,11 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './TodoForm.scss'
 import addButton from '../img/add_button.png'
 
 interface newTodoInterface {
     id: number
     text: string
-    complete: boolean
+    completed: boolean
     inputId: string
 }
 
@@ -30,18 +30,24 @@ const TodoForm = ({
         const newTodo: newTodoInterface = {
             id: Math.random(),
             text: todo,
-            complete: false,
+            completed: false,
             inputId: Math.random().toString(),
         }
 
         if (todo.trim().length > 0) {
-            setTodos([...todos].concat(newTodo))
+            setTodos([newTodo].concat(todos))
             setTodo('')
             setIsActive(true)
         } else {
             setIsActive(false)
         }
     }
+
+    useEffect(() => {
+        if (todo.trim().length > 0) {
+            setIsActive(true)
+        }
+    }, [todo])
 
     return (
         <div>
@@ -52,7 +58,7 @@ const TodoForm = ({
                     placeholder={
                         isActive
                             ? 'Insert your todo'
-                            : 'You don`t insert your todo'
+                            : 'You didn`t write anything'
                     }
                     type='text'
                     onChange={inputChangeHandler}

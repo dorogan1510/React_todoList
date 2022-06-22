@@ -7,7 +7,7 @@ const App = () => {
     interface newTodoInterface {
         id: number
         text: string
-        complete: boolean
+        completed: boolean
         inputId: string
     }
 
@@ -40,6 +40,7 @@ const App = () => {
                 setTodos={setTodos}
             />
             <TodoItem
+                todo={todo}
                 todos={todos}
                 setTodos={setTodos}
                 todoEdit={todoEdit}
