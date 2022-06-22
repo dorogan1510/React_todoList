@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import './TodoForm.scss'
+import addButton from '../img/add_button.png'
 
 interface newTodoInterface {
     id: number
@@ -57,7 +58,14 @@ const TodoForm = ({
                     onChange={inputChangeHandler}
                     value={todo}
                 />
-                <button type='submit'>Add todo</button>
+                <button type='submit'>
+                    <img
+                        alt='img'
+                        src={addButton}
+                        width={'30px'}
+                        height={'30px'}
+                    ></img>
+                </button>
             </form>
         </div>
     )

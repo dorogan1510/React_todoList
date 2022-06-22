@@ -1,5 +1,8 @@
 import React from 'react'
 import './TodoItem.scss'
+import deleteBtn from '../img/delete.png'
+import editBtn from '../img/edit.png'
+import submitEditBtn from '../img/submit_edit.png'
 
 const TodoItem = ({
     todos,
@@ -59,8 +62,16 @@ const TodoItem = ({
                                     }
                                     value={editText}
                                 />
-                                <button onClick={() => submitEditTodo(todo.id)}>
-                                    Submit edit
+                                <button
+                                    className='buttons'
+                                    onClick={() => submitEditTodo(todo.id)}
+                                >
+                                    <img
+                                        alt='img'
+                                        src={submitEditBtn}
+                                        width={'30px'}
+                                        height={'30px'}
+                                    ></img>
                                 </button>
                             </div>
                         </div>
@@ -99,14 +110,27 @@ const TodoItem = ({
                                 <p>{todo.text}</p>
                             </div>
                             <div>
-                                <button onClick={() => setTodoEdit(todo.id)}>
-                                    Edit
+                                <button
+                                    className='buttons'
+                                    onClick={() => setTodoEdit(todo.id)}
+                                >
+                                    <img
+                                        alt='img'
+                                        src={editBtn}
+                                        width={'20px'}
+                                        height={'20px'}
+                                    ></img>
                                 </button>
                                 <button
-                                    className='delete-button'
+                                    className='delete-button buttons'
                                     onClick={() => deleteTodo(todo.id)}
                                 >
-                                    Delete
+                                    <img
+                                        alt='img'
+                                        src={deleteBtn}
+                                        width={'20px'}
+                                        height={'20px'}
+                                    ></img>
                                 </button>
                             </div>
                         </div>

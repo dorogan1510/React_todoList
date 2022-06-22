@@ -70,10 +70,6 @@
         list-style: none;
     }
 
-    img {
-        vertical-align: top;
-    }
-
     h1,
     h2,
     h3,
@@ -86,12 +82,14 @@
     /*--------------------*/
 
     font-style: Lato;
-    margin: 0 auto;
+    margin: 10px auto;
     width: 375px;
     height: 812px;
 
     background-color: #121212;
     text-align: center;
+
+    border-radius: 20px;
 
     overflow: hidden;
 
