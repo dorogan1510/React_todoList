@@ -40,7 +40,6 @@ const App = () => {
                 setTodos={setTodos}
             />
             <TodoItem
-                todo={todo}
                 todos={todos}
                 setTodos={setTodos}
                 todoEdit={todoEdit}

@@ -38,14 +38,6 @@
                 color: rgba(255, 255, 255, 0.4);
             }
         }
-        // &::before {
-        //     content: '';
-        //     position: absolute;
-        //     top: 12px;
-        //     width: 34px;
-        //     height: 1px;
-        //     background-color: #fff;
-        // }
     }
 }
 
@@ -112,7 +104,7 @@
     }
 }
 
-//
+// Checkbox
 
 ._checkbox {
     display: none;
@@ -120,7 +112,6 @@
 
 label {
     position: absolute;
-    // top: 50%;
     right: 0;
     left: 10px;
 

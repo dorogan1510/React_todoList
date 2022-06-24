@@ -54,7 +54,6 @@ const TodoForm = ({
             <form className='form' onSubmit={formSubmitHandler}>
                 <input
                     className={`form__input ${!isActive ? 'danger' : ''}`}
-                    // placeholder='Insert your todo'
                     placeholder={
                         isActive
                             ? 'Insert your todo'

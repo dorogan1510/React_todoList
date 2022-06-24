@@ -6,8 +6,14 @@ import deleteBtn from '../img/delete.png'
 import editBtn from '../img/edit.png'
 import submitEditBtn from '../img/submit_edit.png'
 
+interface newTodoInterface {
+    id: number
+    text: string
+    completed: boolean
+    inputId: string
+}
+
 const TodoItem = ({
-    todo,
     todos,
     setTodos,
     todoEdit,
@@ -15,8 +21,7 @@ const TodoItem = ({
     editText,
     setEditText,
 }: {
-    todo: any
-    todos: any
+    todos: newTodoInterface[]
     setTodos: Function
     todoEdit: number | null
     setTodoEdit: Function

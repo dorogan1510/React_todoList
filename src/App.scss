@@ -1,92 +1,11 @@
 .App {
-    /*Reset CSS*/
-    * {
-        padding: 0;
-        margin: 0;
-        border: btn;
-    }
-
-    *,
-    *:before,
-    *:after {
-        box-sizing: border-box;
-    }
-
-    :focus,
-    :active {
-        outline: none;
-    }
-
-    a:focus,
-    a:active {
-        outline: none;
-    }
-
-    nav,
-    footer,
-    header,
-    aside {
-        display: block;
-    }
-
-    html,
-    body {
-        height: 100%;
-        width: 100%;
-        font-size: 100%;
-        line-height: 1;
-        font-size: 14px;
-    }
-
-    input,
-    button,
-    textarea {
-        font-family: inherit;
-    }
-
-    input::-ms-clear {
-        display: none;
-    }
-
-    button {
-        cursor: pointer;
-    }
-
-    button::-moz-focus-inner {
-        padding: 0;
-        border: 0;
-    }
-
-    a,
-    a:visited {
-        text-decoration: none;
-    }
-
-    a:hover {
-        text-decoration: none;
-    }
-
-    ul li {
-        list-style: none;
-    }
-
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6 {
-        font-size: inherit;
-        font-weight: 400;
-    }
-    /*--------------------*/
-
     font-style: Lato;
     margin: 10px auto;
     width: 375px;
-    height: 812px;
+    min-height: 97vh;
 
     background-color: #121212;
+
     text-align: center;
 
     border-radius: 20px;
@@ -102,6 +21,6 @@
     h1 {
         margin: 40px 0 20px 0;
         color: rgba(255, 255, 255, 0.87);
-        font-size: 20px;
+        font-size: 24px;
     }
 }
