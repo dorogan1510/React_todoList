@@ -1,13 +1,7 @@
-import React, { useEffect, useState } from 'react'
+import React, { Dispatch, useEffect, useState } from 'react'
 import './TodoForm.scss'
 import addButton from '../img/add_button.png'
-
-interface newTodoInterface {
-    id: number
-    text: string
-    completed: boolean
-    inputId: string
-}
+import { newTodoInterface } from '../App'
 
 const TodoForm = ({
     todo,
@@ -16,15 +10,16 @@ const TodoForm = ({
     setTodos,
 }: {
     todo: string
-    setTodo: Function
+    setTodo: Dispatch<string>
     todos: newTodoInterface[]
-    setTodos: Function
+    setTodos: Dispatch<newTodoInterface[]>
 }) => {
-    const [isActive, setIsActive] = useState(true)
+    const [isActive, setIsActive] = useState<boolean>(true)
 
-    const inputChangeHandler = (event: any) => setTodo(event.target.value)
+    const inputChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) =>
+        setTodo(event.target.value)
 
-    const formSubmitHandler = (event: any) => {
+    const formSubmitHandler = (event: React.FormEvent) => {
         event.preventDefault()
 
         const newTodo: newTodoInterface = {

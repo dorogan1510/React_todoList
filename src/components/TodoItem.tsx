@@ -1,17 +1,11 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, Dispatch } from 'react'
 import './TodoItem.scss'
 import { CSSTransition, TransitionGroup } from 'react-transition-group'
 
 import deleteBtn from '../img/delete.png'
 import editBtn from '../img/edit.png'
 import submitEditBtn from '../img/submit_edit.png'
-
-interface newTodoInterface {
-    id: number
-    text: string
-    completed: boolean
-    inputId: string
-}
+import { newTodoInterface } from '../App'
 
 const TodoItem = ({
     todos,
@@ -22,22 +16,24 @@ const TodoItem = ({
     setEditText,
 }: {
     todos: newTodoInterface[]
-    setTodos: Function
+    setTodos: Dispatch<newTodoInterface[]>
     todoEdit: number | null
-    setTodoEdit: Function
+    setTodoEdit: Dispatch<null | number>
     editText: string
-    setEditText: Function
+    setEditText: Dispatch<string>
 }) => {
     const [isActive, setIsActive] = useState(true)
 
-    const deleteTodo = (id: any) => {
-        const updatedTodos = [...todos].filter((todo: any) => todo.id !== id)
+    const deleteTodo = (id: number) => {
+        const updatedTodos = [...todos].filter(
+            (todo: newTodoInterface) => todo.id !== id
+        )
 
         setTodos(updatedTodos)
     }
 
-    const inputToggleComplete = (id: any) => {
-        const updatedTodos = [...todos].map((todo: any) => {
+    const inputToggleComplete = (id: number) => {
+        const updatedTodos = [...todos].map((todo: newTodoInterface) => {
             if (todo.id === id) {
                 todo.completed = !todo.completed
             }
@@ -47,7 +43,7 @@ const TodoItem = ({
         setTodos(updatedTodos)
     }
 
-    const submitEditTodo = (id: any) => {
+    const submitEditTodo = (id: number) => {
         editText.trim().length > 0 ? setIsActive(true) : setIsActive(false)
         if (editText.trim().length > 0) {
             setIsActive(true)
@@ -75,7 +71,7 @@ const TodoItem = ({
     return (
         <div>
             <TransitionGroup className='todo-list'>
-                {todos.map((todo: any) => (
+                {todos.map((todo: newTodoInterface) => (
                     <CSSTransition
                         key={todo.id}
                         timeout={500}

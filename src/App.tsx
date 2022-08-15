@@ -3,14 +3,14 @@ import './App.scss'
 import TodoForm from './components/TodoForm'
 import TodoItem from './components/TodoItem'
 
-const App = () => {
-    interface newTodoInterface {
-        id: number
-        text: string
-        completed: boolean
-        inputId: string
-    }
+export interface newTodoInterface {
+    id: number
+    text: string
+    completed: boolean
+    inputId: string
+}
 
+const App = () => {
     const [todos, setTodos] = useState<newTodoInterface[]>([])
     const [todo, setTodo] = useState<string>('')
     const [todoEdit, setTodoEdit] = useState<number | null>(null)
